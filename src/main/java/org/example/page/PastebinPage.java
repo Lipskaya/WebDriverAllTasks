@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class PastebinPage extends BasePage {
     private Browser browser;
-    private static final String PASTEBIN_PAGE_URL = "https://pastebin.com/";
+    public static final String PASTEBIN_PAGE_URL = "https://pastebin.com/";
     private static final String POST_FORM_XPATH = "//*[@id='postform-text']";
 
     private static final String PAST_EXPIRATION_XPATH = "//div[@class='form-group field-postform-expiration']//span[contains(@class, 'select2-selection--single')]";
@@ -18,12 +18,6 @@ public class PastebinPage extends BasePage {
 
     public PastebinPage() {
         browser = Browser.getInstance();
-    }
-
-
-
-    public void openPage(){
-        browser.open(PASTEBIN_PAGE_URL);
     }
 
     public void fillCode(){

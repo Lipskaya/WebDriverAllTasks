@@ -10,7 +10,7 @@ public class PastebinTest extends BaseTest{
     @Test
     public void baseTest(){
         PastebinPage page = new PastebinPage();
-        page.openPage();
+        page.openPage(PastebinPage.PASTEBIN_PAGE_URL);
         page.fillCode();
         page.fillExpiration();
         page.fillTitle();
