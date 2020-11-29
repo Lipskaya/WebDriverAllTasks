@@ -1,19 +1,14 @@
 package org.example.page;
 
-import org.example.Browser;
-
 public class TenMinuteEmailPage extends BasePage{
 
-    private Browser browser;
     public static final String TEN_MINUTE_EMAIL_PAGE_URL = "https://10minutemail.com";
     private static final String EMAIL_INPUT_XPATH = "//input[@id='mail_address']";
     private static final String ATTRIBUTE_VALUE = "value";
     private static final String TOTAL_PRICE_XPATH = "//tr[@id='mobilepadding']//h2";
 
     public TenMinuteEmailPage() {
-        browser = Browser.getInstance();
     }
-
 
     public String getCopyEmailAddress(){
         while (waitVisible(EMAIL_INPUT_XPATH).getAttribute(ATTRIBUTE_VALUE).trim().length() == 0){
@@ -22,19 +17,13 @@ public class TenMinuteEmailPage extends BasePage{
        return waitVisible(EMAIL_INPUT_XPATH).getAttribute(ATTRIBUTE_VALUE).trim();
     }
 
-
     public void openEmailWithTitle(String title){
-
         String xpath = "//div[@class='small_subject']/span[text()='" + title +"']";
         waitVisible(xpath).click();
     }
-    public String getTotalPrice(){
 
+    public String getTotalPrice(){
         return waitVisible(TOTAL_PRICE_XPATH).getText()
                 .replace("Estimated Monthly Cost:","").trim();
-
     }
-
-
-
 }

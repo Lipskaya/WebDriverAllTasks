@@ -1,27 +1,21 @@
 package org.example.page;
 
-
-import org.example.Browser;
-import org.openqa.selenium.WebElement;
-
 public class PastebinPage extends BasePage {
-    private Browser browser;
     public static final String PASTEBIN_PAGE_URL = "https://pastebin.com/";
     private static final String POST_FORM_XPATH = "//*[@id='postform-text']";
 
     private static final String PAST_EXPIRATION_XPATH = "//div[@class='form-group field-postform-expiration']//span[contains(@class, 'select2-selection--single')]";
     private static final String TEN_MINUTES_XPATH = "//li[text() ='10 Minutes']";
     private static final String FORM_NAME_XPATH ="//*[@id='postform-name']";
-    private static final String POST_FORM_VALUE = "Hello from WebDriver";
-    private static final String FORM_NAME_VALUE = "helloweb";
+    public static final String CODE = "Hello from WebDriver";
+    public static final String TITLE = "helloweb";
     private static final String SUBMIT_BUTTON_XPATH="//button[text()='Create New Paste']";
 
     public PastebinPage() {
-        browser = Browser.getInstance();
     }
 
-    public void fillCode(){
-        waitVisible(POST_FORM_XPATH).sendKeys(POST_FORM_VALUE);
+    public void fillCode(String value){
+        waitVisible(POST_FORM_XPATH).sendKeys(value);
     }
 
     public void fillExpiration(){
@@ -29,22 +23,21 @@ public class PastebinPage extends BasePage {
         waitVisible(TEN_MINUTES_XPATH).click();
     }
 
-    public void fillTitle(){
-        waitVisible(FORM_NAME_XPATH).sendKeys(FORM_NAME_VALUE);
+    public void fillTitle(String title){
+        waitVisible(FORM_NAME_XPATH).sendKeys(title);
     }
 
     public void submitForm(){
         waitVisible(SUBMIT_BUTTON_XPATH).click();
     }
 
-
-    public boolean isTitleCorrect(){
+    public boolean isTitleCorrect(String title){
         boolean result = false;
         try {
             //генерим динамический xPath для переданного в параметре метода имени папки
             String xpathString = "//h1";
             waitVisible(xpathString);
-            result = FORM_NAME_VALUE.equals(waitVisible(xpathString).getText());
+            result = title.equals(waitVisible(xpathString).getText());
         } catch (Exception e) {
             e.printStackTrace();
             result = false;
@@ -67,14 +60,14 @@ public class PastebinPage extends BasePage {
         return result;
     }
 
-    public boolean isCodeCorrect(){
+    public boolean isCodeCorrect(String value){
         boolean result = false;
 
         try {
             //генерим динамический xPath для переданного в параметре метода имени папки
             String xpathString = "//textarea[@class='textarea']";
             waitVisible(xpathString);
-            result = POST_FORM_VALUE.equals(waitVisible(xpathString).getText().trim());
+            result = value.equals(waitVisible(xpathString).getText().trim());
         } catch (Exception e) {
             e.printStackTrace();
             result = false;
