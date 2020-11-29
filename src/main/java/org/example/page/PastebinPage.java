@@ -17,6 +17,9 @@ public class PastebinPage extends BasePage {
 
     public PastebinPage() {
     }
+    public void openPage(){
+        openPage(PASTEBIN_PAGE_URL);
+    }
 
     public void fillCode(String value){
         waitVisible(POST_FORM_XPATH).sendKeys(value);
