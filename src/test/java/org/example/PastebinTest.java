@@ -1,7 +1,6 @@
 package org.example;
 
 import org.example.page.PastebinPage;
-import org.example.page.PastebinPageAdvanced;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
@@ -26,17 +25,17 @@ public class PastebinTest extends BaseTest{
     @Test
     public void advancedTest(){
 
-        PastebinPageAdvanced page = new PastebinPageAdvanced();
+        PastebinPage page = new PastebinPage();
         page.openPage(PastebinPage.PASTEBIN_PAGE_URL);
-        page.fillCode(PastebinPageAdvanced.CODE_ADVANCED);
+        page.fillCode(PastebinPage.CODE_ADVANCED);
         page.fillBashHighlighting();
         page.fillExpiration();
-        page.fillTitle(PastebinPageAdvanced.TITLE_ADVANCED);
+        page.fillTitle(PastebinPage.TITLE_ADVANCED);
         page.submitForm();
 
-        Assert.assertTrue(page.isTitleCorrect(PastebinPageAdvanced.TITLE_ADVANCED));
+        Assert.assertTrue(page.isTitleCorrect(PastebinPage.TITLE_ADVANCED));
         Assert.assertTrue(page.isExpirationCorrect());
-        Assert.assertTrue(page.isCodeCorrect(PastebinPageAdvanced.CODE_ADVANCED));
+        Assert.assertTrue(page.isCodeCorrect(PastebinPage.CODE_ADVANCED));
         Assert.assertTrue("Highlighting is not bash",page.isHighlightingBash());
     }
 

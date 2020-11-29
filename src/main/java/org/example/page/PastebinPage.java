@@ -10,6 +10,10 @@ public class PastebinPage extends BasePage {
     public static final String CODE = "Hello from WebDriver";
     public static final String TITLE = "helloweb";
     private static final String SUBMIT_BUTTON_XPATH="//button[text()='Create New Paste']";
+    private static final String PAST_HIGHLIGHTING_XPATH = "//div[@class='col-sm-9 field-wrapper']//span[contains(@id, 'select2-postform-format-container')]";
+    private static final String BASH_XPATH = "//li[text()='Bash']";
+    public static final String CODE_ADVANCED = "git config --global user.name  \"New Sheriff in Town\"\ngit reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\ngit push origin master --force";
+    public static final String TITLE_ADVANCED = "how to gain dominance among developers";
 
     public PastebinPage() {
     }
@@ -68,6 +72,25 @@ public class PastebinPage extends BasePage {
             String xpathString = "//textarea[@class='textarea']";
             waitVisible(xpathString);
             result = value.equals(waitVisible(xpathString).getText().trim());
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = false;
+        }
+        return result;
+    }
+    public void fillBashHighlighting(){
+        waitVisible(PAST_HIGHLIGHTING_XPATH).click();
+        waitVisible(BASH_XPATH).click();
+    }
+
+    public boolean isHighlightingBash(){
+        boolean result = false;
+
+        try {
+            //генерим динамический xPath для переданного в параметре метода имени папки
+            String xpathString = "//ol[@class='bash']";
+            waitVisible(xpathString);
+            result = true;
         } catch (Exception e) {
             e.printStackTrace();
             result = false;
