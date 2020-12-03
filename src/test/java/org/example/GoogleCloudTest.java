@@ -14,7 +14,7 @@ class GoogleCloudTest extends BaseTest{
 
     @Test
      void baseTest() {
-        GoogleCloudPage page = new GoogleCloudPage(GoogleCloudPage.GOOGLE_CLOUD_PAGE_URL);
+        GoogleCloudPage page = new GoogleCloudPage();
         page.openPage();
         page.performSearch("Google Cloud Platform Pricing Calculator");
         page.clickFirstSearchResult();
@@ -41,7 +41,7 @@ class GoogleCloudTest extends BaseTest{
         page.chooseEmailEstimate();
         page.openNewTab();
 
-        TenMinuteEmailPage tenMinuteEmailPage = new TenMinuteEmailPage(TenMinuteEmailPage.TEN_MINUTE_EMAIL_PAGE_URL);
+        TenMinuteEmailPage tenMinuteEmailPage = new TenMinuteEmailPage();
         tenMinuteEmailPage.openPage();
         String email = tenMinuteEmailPage.getCopyEmailAddress();
         tenMinuteEmailPage.changeTab(googleCloudTab);

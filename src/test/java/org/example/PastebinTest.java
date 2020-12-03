@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
     @Test
      void baseTest(){
-        PastebinPage page = new PastebinPage(PastebinPage.PASTEBIN_PAGE_URL);
+        PastebinPage page = new PastebinPage();
         page.openPage();
         page.fillCode(PastebinPage.CODE);
         page.fillExpiration();
@@ -25,7 +25,7 @@ import org.junit.jupiter.api.Test;
     @Test
     void advancedTest(){
 
-        PastebinPage page = new PastebinPage(PastebinPage.PASTEBIN_PAGE_URL);
+        PastebinPage page = new PastebinPage();
         page.openPage();
         page.fillCode(PastebinPage.CODE_ADVANCED);
         page.fillBashHighlighting();

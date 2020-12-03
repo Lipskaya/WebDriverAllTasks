@@ -8,7 +8,7 @@ public class GoogleCloudPage extends BasePage{
 
     private Browser browser;
     private static final String SCROLL_SCRIPT = "arguments[0].scrollIntoView(true);";
-    public static final String GOOGLE_CLOUD_PAGE_URL = " https://cloud.google.com/";
+    private static final String GOOGLE_CLOUD_PAGE_URL = " https://cloud.google.com/";
     private static final String SEARCH_XPATH = " //input[@name='q']";
     private static final String FIRST_RESULT_XPATH = "(//a[@class='gs-title']/b)[1]";
     private static final String COMPUTE_ENGINE_XPATH = "//md-tab-item//div[text()='Compute Engine']";
@@ -29,8 +29,8 @@ public class GoogleCloudPage extends BasePage{
     private static final String PAST_EMAIL_ADDRESS = "//input[@ng-model='emailQuote.user.email']";
     private static final String SEND_EMAIL_XPATH = "//button[@aria-label='Send Email']";
 
-    public GoogleCloudPage(String url) {
-        super(url);
+    public GoogleCloudPage() {
+        super(GOOGLE_CLOUD_PAGE_URL);
         browser = Browser.getInstance();
     }
 

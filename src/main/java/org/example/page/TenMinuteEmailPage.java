@@ -2,13 +2,13 @@ package org.example.page;
 
 public class TenMinuteEmailPage extends BasePage{
 
-    public static final String TEN_MINUTE_EMAIL_PAGE_URL = "https://10minutemail.com";
+    private static final String TEN_MINUTE_EMAIL_PAGE_URL = "https://10minutemail.com";
     private static final String EMAIL_INPUT_XPATH = "//input[@id='mail_address']";
     private static final String ATTRIBUTE_VALUE = "value";
     private static final String TOTAL_PRICE_XPATH = "//tr[@id='mobilepadding']//h2";
 
-    public TenMinuteEmailPage(String url) {
-        super(url);
+    public TenMinuteEmailPage() {
+        super(TEN_MINUTE_EMAIL_PAGE_URL);
     }
 
     public String getCopyEmailAddress(){

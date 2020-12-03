@@ -1,7 +1,7 @@
 package org.example.page;
 
 public class PastebinPage extends BasePage {
-    public static final String PASTEBIN_PAGE_URL = "https://pastebin.com/";
+    private static final String PASTEBIN_PAGE_URL = "https://pastebin.com/";
     private static final String POST_FORM_XPATH = "//*[@id='postform-text']";
 
     private static final String PAST_EXPIRATION_XPATH = "//div[@class='form-group field-postform-expiration']//span[contains(@class, 'select2-selection--single')]";
@@ -15,8 +15,8 @@ public class PastebinPage extends BasePage {
     public static final String CODE_ADVANCED = "git config --global user.name  \"New Sheriff in Town\"\ngit reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\ngit push origin master --force";
     public static final String TITLE_ADVANCED = "how to gain dominance among developers";
 
-    public PastebinPage(String url) {
-        super(url);
+    public PastebinPage() {
+        super(PASTEBIN_PAGE_URL);
     }
 
     public void fillCode(String value){
