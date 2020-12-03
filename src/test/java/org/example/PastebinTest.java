@@ -4,13 +4,13 @@ import org.example.page.PastebinPage;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-public class PastebinTest extends BaseTest{
+ class PastebinTest extends BaseTest{
     private static Browser browser;
 
     @Test
-    public void baseTest(){
-        PastebinPage page = new PastebinPage();
-        page.openPage(PastebinPage.PASTEBIN_PAGE_URL);
+     void baseTest(){
+        PastebinPage page = new PastebinPage(PastebinPage.PASTEBIN_PAGE_URL);
+        page.openPage();
         page.fillCode(PastebinPage.CODE);
         page.fillExpiration();
         page.fillTitle(PastebinPage.TITLE);
@@ -23,10 +23,10 @@ public class PastebinTest extends BaseTest{
     }
 
     @Test
-    public void advancedTest(){
+    void advancedTest(){
 
-        PastebinPage page = new PastebinPage();
-        page.openPage(PastebinPage.PASTEBIN_PAGE_URL);
+        PastebinPage page = new PastebinPage(PastebinPage.PASTEBIN_PAGE_URL);
+        page.openPage();
         page.fillCode(PastebinPage.CODE_ADVANCED);
         page.fillBashHighlighting();
         page.fillExpiration();

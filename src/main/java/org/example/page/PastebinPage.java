@@ -15,7 +15,8 @@ public class PastebinPage extends BasePage {
     public static final String CODE_ADVANCED = "git config --global user.name  \"New Sheriff in Town\"\ngit reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\ngit push origin master --force";
     public static final String TITLE_ADVANCED = "how to gain dominance among developers";
 
-    public PastebinPage() {
+    public PastebinPage(String url) {
+        super(url);
     }
 
     public void fillCode(String value){

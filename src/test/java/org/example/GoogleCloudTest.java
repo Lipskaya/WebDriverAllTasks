@@ -6,16 +6,16 @@ import org.junit.jupiter.api.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class GoogleCloudTest extends BaseTest{
+class GoogleCloudTest extends BaseTest{
 
     private int googleCloudTab = 0;
     private int tenEmailTab = 1;
 
 
     @Test
-    public void baseTest() {
-        GoogleCloudPage page = new GoogleCloudPage();
-        page.openPage(GoogleCloudPage.GOOGLE_CLOUD_PAGE_URL);
+     void baseTest() {
+        GoogleCloudPage page = new GoogleCloudPage(GoogleCloudPage.GOOGLE_CLOUD_PAGE_URL);
+        page.openPage();
         page.performSearch("Google Cloud Platform Pricing Calculator");
         page.clickFirstSearchResult();
         page.clickComputeEngine();
@@ -41,8 +41,8 @@ public class GoogleCloudTest extends BaseTest{
         page.chooseEmailEstimate();
         page.openNewTab();
 
-        TenMinuteEmailPage tenMinuteEmailPage = new TenMinuteEmailPage();
-        tenMinuteEmailPage.openPage(TenMinuteEmailPage.TEN_MINUTE_EMAIL_PAGE_URL);
+        TenMinuteEmailPage tenMinuteEmailPage = new TenMinuteEmailPage(TenMinuteEmailPage.TEN_MINUTE_EMAIL_PAGE_URL);
+        tenMinuteEmailPage.openPage();
         String email = tenMinuteEmailPage.getCopyEmailAddress();
         tenMinuteEmailPage.changeTab(googleCloudTab);
 

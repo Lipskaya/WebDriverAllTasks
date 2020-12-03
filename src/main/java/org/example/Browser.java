@@ -52,7 +52,7 @@ public class Browser implements WrapsDriver {
     return driver;
   }
 
-  public void stopBrowser() {
+  public static void stopBrowser() {
     try {
       getInstance().getWrappedDriver().quit();
       getInstance().driver = null;
@@ -63,7 +63,8 @@ public class Browser implements WrapsDriver {
   }
 
   public void open(String url) {
-    driver.get(url);
+
+      driver.get(url);
   }
 
   // from here: https://stackoverflow.com/questions/10660291/highlight-elements-in-webdriver-during-runtime

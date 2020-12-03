@@ -29,7 +29,8 @@ public class GoogleCloudPage extends BasePage{
     private static final String PAST_EMAIL_ADDRESS = "//input[@ng-model='emailQuote.user.email']";
     private static final String SEND_EMAIL_XPATH = "//button[@aria-label='Send Email']";
 
-    public GoogleCloudPage() {
+    public GoogleCloudPage(String url) {
+        super(url);
         browser = Browser.getInstance();
     }
 

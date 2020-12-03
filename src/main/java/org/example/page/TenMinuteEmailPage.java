@@ -7,7 +7,8 @@ public class TenMinuteEmailPage extends BasePage{
     private static final String ATTRIBUTE_VALUE = "value";
     private static final String TOTAL_PRICE_XPATH = "//tr[@id='mobilepadding']//h2";
 
-    public TenMinuteEmailPage() {
+    public TenMinuteEmailPage(String url) {
+        super(url);
     }
 
     public String getCopyEmailAddress(){
