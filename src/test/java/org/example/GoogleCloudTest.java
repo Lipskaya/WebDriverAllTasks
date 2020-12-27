@@ -2,33 +2,33 @@ package org.example;
 
 import org.example.page.*;
 import org.example.page.enums.*;
+import org.example.page.model.cloud.VirtualMachine;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-class GoogleCloudTest extends BaseTest{
+class GoogleCloudTest extends BaseTest {
 
     private int googleCloudTab = 0;
     private int tenEmailTab = 1;
 
 
     @Test
-     void baseTest() {
+    void baseTest() {
         GoogleCloudPage page = new GoogleCloudPage();
+
         page.openPage();
+        page.closeCookiesDialog();
         page.performSearch("Google Cloud Platform Pricing Calculator");
         page.clickFirstSearchResult();
         page.clickComputeEngine();
         page.fillNumberOfInstances(4);
-        page.fillOperatingSystem(OperatingSystems.FREE_DEBIAN);
-        page.fillMachineClass("Regular");
-        page.fillSeries("N1");
-        page.fillMachineType(MachineType.N1_STANDARD_8);
-        page.chooseAddGPUs();
-        page.fillNumberOfGPUs("1");
-        page.fillGPUType(GPUType.NVIDIA_TESLA_v100);
-        page.fillLocalSSD("2");
-        page.fillDatacenterlocation(Location.FRANKFURT);
+
+        VirtualMachine vm = createVirtualMachine();
+
+        page.fillVirtualMachineParameters(vm);
+
         page.fillCommitUsage(CommitUsage.ONE_YEAR);
         page.tabAddToEstimate();
 
@@ -55,6 +55,20 @@ class GoogleCloudTest extends BaseTest{
         String calculatedPrice = page.getTotalPrice();
 
         assertEquals(emailPrice, calculatedPrice);
+
+    }
+
+    private VirtualMachine createVirtualMachine() {
+        VirtualMachine vm = new VirtualMachine();
+        vm.setOperatingSystems(OperatingSystems.FREE_DEBIAN);
+        vm.setMachineClass("Regular");
+        vm.setSeries("N1");
+        vm.setMachineType(MachineType.N1_STANDARD_8);
+        vm.setNumberOfGPUs("1");
+        vm.setGpuType(GPUType.NVIDIA_TESLA_v100);
+        vm.setLocalSSD("2");
+        vm.setLocation(Location.FRANKFURT);
+        return vm;
 
     }
 

@@ -1,5 +1,7 @@
 package org.example.page;
 
+import org.example.page.model.pastebin.Paste;
+
 public class PastebinPage extends BasePage {
     private static final String PASTEBIN_PAGE_URL = "https://pastebin.com/";
     private static final String POST_FORM_XPATH = "//*[@id='postform-text']";
@@ -36,13 +38,13 @@ public class PastebinPage extends BasePage {
         waitVisible(SUBMIT_BUTTON_XPATH).click();
     }
 
-    public boolean isTitleCorrect(String title){
+    public boolean isTitleCorrect(Paste paste){
         boolean result = false;
         try {
             //генерим динамический xPath для переданного в параметре метода имени папки
             String xpathString = "//h1";
             waitVisible(xpathString);
-            result = title.equals(waitVisible(xpathString).getText());
+            result = paste.getTitle().equals(waitVisible(xpathString).getText());
         } catch (Exception e) {
             e.printStackTrace();
             result = false;
@@ -65,14 +67,14 @@ public class PastebinPage extends BasePage {
         return result;
     }
 
-    public boolean isCodeCorrect(String value){
+    public boolean isCodeCorrect(Paste paste){
         boolean result = false;
 
         try {
             //генерим динамический xPath для переданного в параметре метода имени папки
             String xpathString = "//textarea[@class='textarea']";
             waitVisible(xpathString);
-            result = value.equals(waitVisible(xpathString).getText().trim());
+            result = paste.getCode().equals(waitVisible(xpathString).getText().trim());
         } catch (Exception e) {
             e.printStackTrace();
             result = false;
@@ -97,5 +99,15 @@ public class PastebinPage extends BasePage {
             result = false;
         }
         return result;
+    }
+    public void fillAllFields(Paste paste){
+        fillCode(paste.getCode());
+        if (paste.isBashHighlighting()){
+            fillBashHighlighting();
+        }
+        fillExpiration();
+        fillTitle(paste.getTitle());
+
+
     }
 }

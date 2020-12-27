@@ -1,10 +1,11 @@
 package org.example.page;
 
-import org.example.Browser;
+import org.example.page.driver.Browser;
 import org.example.page.enums.*;
+import org.example.page.model.cloud.VirtualMachine;
 import org.openqa.selenium.*;
 
-public class GoogleCloudPage extends BasePage{
+public class GoogleCloudPage extends BasePage {
 
     private Browser browser;
     private static final String SCROLL_SCRIPT = "arguments[0].scrollIntoView(true);";
@@ -28,6 +29,7 @@ public class GoogleCloudPage extends BasePage{
     private static final String EMAIL_YOUR_ESTIMATE_XPATH = "//span[text()='Email Your Estimate']";
     private static final String PAST_EMAIL_ADDRESS = "//input[@ng-model='emailQuote.user.email']";
     private static final String SEND_EMAIL_XPATH = "//button[@aria-label='Send Email']";
+    private static final String COOKIES_OK_XPATH = "//button[text()='OK']";
 
     public GoogleCloudPage() {
         super(GOOGLE_CLOUD_PAGE_URL);
@@ -79,7 +81,7 @@ public class GoogleCloudPage extends BasePage{
 
     public void fillSeries(String series) {
         String seriesXPath = "//div[@class='md-select-menu-container md-active md-clickable']" +
-                "//md-option[@value='"+ series.toLowerCase() + "']";
+                "//md-option[@value='" + series.toLowerCase() + "']";
         waitVisible(SERIES_XPATH).click();
         browser.waitClickable(seriesXPath).click();
 
@@ -102,6 +104,7 @@ public class GoogleCloudPage extends BasePage{
     }
 
     public void fillNumberOfGPUs(String numberOfGPUS) {
+        chooseAddGPUs();
         String numberOfGPUSXpath = "//div[@class='md-select-menu-container md-active md-clickable']" +
                 "//md-option[@value='" + numberOfGPUS + "']";
         waitVisible(NUMBER_OF_GPUS_XPATH).click();
@@ -144,16 +147,16 @@ public class GoogleCloudPage extends BasePage{
         browser.waitClickable(ADD_TO_ESTIMATE_XPATH).click();
     }
 
-    public void chooseEmailEstimate(){
+    public void chooseEmailEstimate() {
         waitVisible(EMAIL_ESTIMATE_XPATH).click();
         WebElement element = waitVisible(EMAIL_YOUR_ESTIMATE_XPATH);
         ((JavascriptExecutor) browser.getWrappedDriver()).executeScript(SCROLL_SCRIPT, element);
     }
 
-    public void sendEmail(String email){
+    public void sendEmail(String email) {
         WebDriver driver = browser.getWrappedDriver();
         driver.switchTo().defaultContent();
-         driver.switchTo().frame(0);//Переключаемяся на первый iframe
+        driver.switchTo().frame(0);//Переключаемяся на первый iframe
         driver.switchTo().frame(0); //Переключаемяся на первый iframe внутри родительского iframe
         // находим вебэлемент - до которого нужно прокрутить страницу
         WebElement element = waitVisible(EMAIL_YOUR_ESTIMATE_XPATH);
@@ -163,7 +166,7 @@ public class GoogleCloudPage extends BasePage{
         waitVisible(SEND_EMAIL_XPATH).click();
     }
 
-    public String getTotalPrice(){
+    public String getTotalPrice() {
         WebDriver driver = browser.getWrappedDriver();
         driver.switchTo().defaultContent();
         driver.switchTo().frame(0);//Переключаемяся на первый iframe
@@ -266,5 +269,20 @@ public class GoogleCloudPage extends BasePage{
             result = false;
         }
         return result;
+    }
+
+    public void closeCookiesDialog() {
+        waitVisible(COOKIES_OK_XPATH).click();
+    }
+
+    public void fillVirtualMachineParameters(VirtualMachine vm) {
+        fillOperatingSystem(vm.getOperatingSystems());
+        fillMachineClass(vm.getMachineClass());
+        fillSeries(vm.getSeries());
+        fillMachineType(vm.getMachineType());
+        fillNumberOfGPUs(vm.getNumberOfGPUs());
+        fillGPUType(vm.getGpuType());
+        fillLocalSSD(vm.getLocalSSD());
+        fillDatacenterlocation(vm.getLocation());
     }
 }

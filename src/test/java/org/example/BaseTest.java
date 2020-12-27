@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.page.driver.Browser;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
@@ -13,6 +14,6 @@ public class BaseTest {
 
     @AfterAll
     public static void tearDown() {
-        browser.stopBrowser();
+    //    browser.stopBrowser();
     }
 }
