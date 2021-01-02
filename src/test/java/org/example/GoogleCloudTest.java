@@ -1,12 +1,13 @@
 package org.example;
 
-import org.example.page.*;
+import org.example.model.cloud.VirtualMachine;
+import org.example.page.GoogleCloudPage;
+import org.example.page.TenMinuteEmailPage;
 import org.example.page.enums.*;
-import org.example.page.model.cloud.VirtualMachine;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
 
 class GoogleCloudTest extends BaseTest {
 

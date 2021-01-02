@@ -1,6 +1,6 @@
 package org.example.page;
 
-import org.example.page.driver.Browser;
+import org.example.driver.Browser;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 

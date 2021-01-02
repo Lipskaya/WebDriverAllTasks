@@ -1,12 +1,14 @@
 package org.example;
 
 import org.example.page.PastebinPage;
-import org.example.page.driver.Browser;
-import org.example.page.model.pastebin.Paste;
-import org.junit.Assert;
-import org.junit.jupiter.api.Test;
+import org.example.driver.Browser;
+import org.example.model.pastebin.Paste;
+import org.testng.annotations.Test;
 
- class PastebinTest extends BaseTest{
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+
+class PastebinTest extends BaseTest{
     private static Browser browser;
 
     @Test
@@ -20,9 +22,9 @@ import org.junit.jupiter.api.Test;
         page.fillAllFields(paste);
         page.submitForm();
 
-        Assert.assertTrue(page.isTitleCorrect(paste));
-        Assert.assertTrue(page.isExpirationCorrect());
-        Assert.assertTrue(page.isCodeCorrect(paste));
+        assertTrue(page.isTitleCorrect(paste));
+        assertTrue(page.isExpirationCorrect());
+        assertTrue(page.isCodeCorrect(paste));
 
     }
 
@@ -38,10 +40,10 @@ import org.junit.jupiter.api.Test;
         page.fillAllFields(paste);
         page.submitForm();
 
-        Assert.assertTrue(page.isTitleCorrect(paste));
-        Assert.assertTrue(page.isExpirationCorrect());
-        Assert.assertTrue(page.isCodeCorrect(paste));
-        Assert.assertTrue("Highlighting is not bash",page.isHighlightingBash());
+        assertTrue(page.isTitleCorrect(paste));
+        assertTrue(page.isExpirationCorrect());
+        assertTrue(page.isCodeCorrect(paste));
+        assertTrue(page.isHighlightingBash());
     }
 
 

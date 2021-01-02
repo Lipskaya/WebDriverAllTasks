@@ -1,4 +1,4 @@
-package org.example.page.model.pastebin;
+package org.example.model.pastebin;
 
 import org.example.page.PastebinPage;
 

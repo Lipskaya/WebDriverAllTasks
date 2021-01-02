@@ -1,8 +1,8 @@
 package org.example.page;
 
-import org.example.page.driver.Browser;
+import org.example.driver.Browser;
 import org.example.page.enums.*;
-import org.example.page.model.cloud.VirtualMachine;
+import org.example.model.cloud.VirtualMachine;
 import org.openqa.selenium.*;
 
 public class GoogleCloudPage extends BasePage {
@@ -30,6 +30,8 @@ public class GoogleCloudPage extends BasePage {
     private static final String PAST_EMAIL_ADDRESS = "//input[@ng-model='emailQuote.user.email']";
     private static final String SEND_EMAIL_XPATH = "//button[@aria-label='Send Email']";
     private static final String COOKIES_OK_XPATH = "//button[text()='OK']";
+    private static final String CLICKABLE_PREFIX = "//div[@class='md-select-menu-container md-active md-clickable']//md-option[@value='";
+    private static final String CLICKABLE_POSTFIX = "']";
 
     public GoogleCloudPage() {
         super(GOOGLE_CLOUD_PAGE_URL);
@@ -64,7 +66,7 @@ public class GoogleCloudPage extends BasePage {
 
     public void fillMachineClass(String machineClass) {
         // находим вебэлемент - до которого нужно прокрутить страницу
-        String machineClassXPath = "//div[@class='md-select-menu-container md-active md-clickable']//md-option[@value='" + machineClass.toLowerCase() + "']";
+        String machineClassXPath = CLICKABLE_PREFIX + machineClass.toLowerCase() + CLICKABLE_POSTFIX;
         WebElement element = waitVisible(COMPUTE_ENGINE_XPATH);
         //прокручивает страницу до уазанного element
         ((JavascriptExecutor) browser.getWrappedDriver()).executeScript(SCROLL_SCRIPT, element);
@@ -73,23 +75,20 @@ public class GoogleCloudPage extends BasePage {
     }
 
     public void fillOperatingSystem(OperatingSystems operatingSystemValue) {
-        String operatingSystemXpath = "//div[@class='md-select-menu-container md-active md-clickable']" +
-                "//md-option[@value='" + operatingSystemValue.toString() + "']";
+        String operatingSystemXpath = CLICKABLE_PREFIX + operatingSystemValue.toString() + CLICKABLE_POSTFIX;
         waitVisible(OPERATING_SYSTEM_XPATH).click();
         browser.waitClickable(operatingSystemXpath).click();
     }
 
     public void fillSeries(String series) {
-        String seriesXPath = "//div[@class='md-select-menu-container md-active md-clickable']" +
-                "//md-option[@value='" + series.toLowerCase() + "']";
+        String seriesXPath = CLICKABLE_PREFIX + series.toLowerCase() + CLICKABLE_POSTFIX;
         waitVisible(SERIES_XPATH).click();
         browser.waitClickable(seriesXPath).click();
 
     }
 
     public void fillMachineType(MachineType machineType) {
-        String machineTypeXpath = "//div[@class='md-select-menu-container md-active md-clickable']" +
-                "//md-option[@value='" + machineType.toString() + "']";
+        String machineTypeXpath = CLICKABLE_PREFIX + machineType.toString() + CLICKABLE_POSTFIX;
         waitVisible(MACHINE_TYPE_XPATH).click();
         browser.waitClickable(machineTypeXpath).click();
 
@@ -105,36 +104,31 @@ public class GoogleCloudPage extends BasePage {
 
     public void fillNumberOfGPUs(String numberOfGPUS) {
         chooseAddGPUs();
-        String numberOfGPUSXpath = "//div[@class='md-select-menu-container md-active md-clickable']" +
-                "//md-option[@value='" + numberOfGPUS + "']";
+        String numberOfGPUSXpath = CLICKABLE_PREFIX + numberOfGPUS + CLICKABLE_POSTFIX;
         waitVisible(NUMBER_OF_GPUS_XPATH).click();
         browser.waitClickable(numberOfGPUSXpath).click();
     }
 
     public void fillGPUType(GPUType gpuType) {
-        String gpuTypeXpath = "//div[@class='md-select-menu-container md-active md-clickable']" +
-                "//md-option[@value='" + gpuType + "']";
+        String gpuTypeXpath = CLICKABLE_PREFIX + gpuType + CLICKABLE_POSTFIX;
         waitVisible(GPUS_TYPE_XPATH).click();
         browser.waitClickable(gpuTypeXpath).click();
     }
 
     public void fillLocalSSD(String localSSD) {
-        String localSSDXpath = "//div[@class='md-select-menu-container md-active md-clickable']" +
-                "//md-option[@value='" + localSSD + "']";
+        String localSSDXpath = CLICKABLE_PREFIX + localSSD + CLICKABLE_POSTFIX;
         waitVisible(LOCAL_SSD_XPATH).click();
         browser.waitClickable(localSSDXpath).click();
     }
 
     public void fillDatacenterlocation(Location location) {
-        String locationXpath = "//div[@class='md-select-menu-container md-active md-clickable']" +
-                "//md-option[@value='" + location + "']";
+        String locationXpath = CLICKABLE_PREFIX + location + CLICKABLE_POSTFIX;
         waitVisible(DATACENTER_LOCATION_XPATH).click();
         browser.waitClickable(locationXpath).click();
     }
 
     public void fillCommitUsage(CommitUsage usage) {
-        String usageXpath = "//div[@class='md-select-menu-container md-active md-clickable']" +
-                "//md-option[@value='" + usage + "']";
+        String usageXpath = CLICKABLE_PREFIX + usage + CLICKABLE_POSTFIX;
         waitVisible(COMMIT_USAGE_XPATH).click();
         browser.waitClickable(usageXpath).click();
     }

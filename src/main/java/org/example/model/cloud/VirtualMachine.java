@@ -1,4 +1,4 @@
-package org.example.page.model.cloud;
+package org.example.model.cloud;
 
 import org.example.page.enums.GPUType;
 import org.example.page.enums.Location;

@@ -1,6 +1,7 @@
-package org.example.page.driver;
+package org.example.driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.example.service.TestDataReader;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -25,7 +26,7 @@ public class Browser implements WrapsDriver {
     // приватный конструктор, чтобы реализовать синглтон и не позволить создавать new Btowser() вне этого класса
     //По примеру Степана
     private Browser() {
-        switch (System.getProperty("browser")) {
+        switch (TestDataReader.getTestData("testdata.browser.name")) {
             case "firefox": {
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();

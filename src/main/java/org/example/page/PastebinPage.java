@@ -1,6 +1,6 @@
 package org.example.page;
 
-import org.example.page.model.pastebin.Paste;
+import org.example.model.pastebin.Paste;
 
 public class PastebinPage extends BasePage {
     private static final String PASTEBIN_PAGE_URL = "https://pastebin.com/";
