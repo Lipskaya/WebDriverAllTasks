@@ -17,6 +17,6 @@ public class BaseTest {
 
     @AfterAll
     public static void tearDown() {
-        //browser.stopBrowser();
+        browser.stopBrowser();
     }
 }
