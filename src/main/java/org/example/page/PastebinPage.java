@@ -1,11 +1,13 @@
 package org.example.page;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.model.pastebin.Paste;
 
 public class PastebinPage extends BasePage {
+    private final Logger logger = LogManager.getRootLogger();
     private static final String PASTEBIN_PAGE_URL = "https://pastebin.com/";
     private static final String POST_FORM_XPATH = "//*[@id='postform-text']";
-
     private static final String PAST_EXPIRATION_XPATH = "//div[@class='form-group field-postform-expiration']//span[contains(@class, 'select2-selection--single')]";
     private static final String TEN_MINUTES_XPATH = "//li[text() ='10 Minutes']";
     private static final String FORM_NAME_XPATH ="//*[@id='postform-name']";
@@ -19,6 +21,7 @@ public class PastebinPage extends BasePage {
 
     public PastebinPage() {
         super(PASTEBIN_PAGE_URL);
+        logger.info("Created PastebinPage");
     }
 
     public void fillCode(String value){

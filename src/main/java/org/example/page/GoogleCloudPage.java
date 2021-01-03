@@ -1,12 +1,14 @@
 package org.example.page;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.driver.Browser;
 import org.example.page.enums.*;
 import org.example.model.cloud.VirtualMachine;
 import org.openqa.selenium.*;
 
 public class GoogleCloudPage extends BasePage {
-
+    private final Logger logger = LogManager.getRootLogger();
     private Browser browser;
     private static final String SCROLL_SCRIPT = "arguments[0].scrollIntoView(true);";
     private static final String GOOGLE_CLOUD_PAGE_URL = " https://cloud.google.com/";
@@ -36,6 +38,7 @@ public class GoogleCloudPage extends BasePage {
     public GoogleCloudPage() {
         super(GOOGLE_CLOUD_PAGE_URL);
         browser = Browser.getInstance();
+        logger.info("Created GoogleCloudPage" );
     }
 
 

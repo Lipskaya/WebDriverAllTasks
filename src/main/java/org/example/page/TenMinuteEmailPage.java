@@ -1,7 +1,10 @@
 package org.example.page;
 
-public class TenMinuteEmailPage extends BasePage{
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+public class TenMinuteEmailPage extends BasePage{
+    private final Logger logger = LogManager.getRootLogger();
     private static final String TEN_MINUTE_EMAIL_PAGE_URL = "https://10minutemail.com";
     private static final String EMAIL_INPUT_XPATH = "//input[@id='mail_address']";
     private static final String ATTRIBUTE_VALUE = "value";
@@ -9,6 +12,7 @@ public class TenMinuteEmailPage extends BasePage{
 
     public TenMinuteEmailPage() {
         super(TEN_MINUTE_EMAIL_PAGE_URL);
+        logger.info("Created TenMinuteEmailPage" );
     }
 
     public String getCopyEmailAddress(){

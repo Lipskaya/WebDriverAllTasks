@@ -1,5 +1,7 @@
 package org.example.page;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.driver.Browser;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -10,6 +12,7 @@ public class BasePage {
 
     private Browser browser;
     private String url;
+    private final Logger logger = LogManager.getRootLogger();
 
     public BasePage(String url) {
         browser = Browser.getInstance();
@@ -25,6 +28,7 @@ public class BasePage {
 
     public void openPage(){
         browser.open(url);
+        logger.info("Page opened");
     }
 
     public void openNewTab(){
