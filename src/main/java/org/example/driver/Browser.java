@@ -1,6 +1,8 @@
 package org.example.driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.service.TestDataReader;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,20 +24,24 @@ public class Browser implements WrapsDriver {
     private static Browser instance;
     private static WebDriver driver;
     private static Wait<WebDriver> wait;
+    private final Logger logger = LogManager.getRootLogger();
 
     // приватный конструктор, чтобы реализовать синглтон и не позволить создавать new Btowser() вне этого класса
     //По примеру Степана
     private Browser() {
         switch (TestDataReader.getTestData("testdata.browser.name")) {
             case "firefox": {
+                logger.info("Creating firefox driver" );
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
             }
             case "edge": {
+                logger.info("Creating edge driver" );
                 WebDriverManager.edgedriver().setup();
                 driver = new EdgeDriver();
             }
             default: {
+                logger.info("Creating default chrome driver" );
                 // System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
                 WebDriverManager.chromedriver().driverVersion("87.0.4280.88").setup();
               //  driver = new ChromeDriver();
