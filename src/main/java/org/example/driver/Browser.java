@@ -34,11 +34,13 @@ public class Browser implements WrapsDriver {
                 logger.info("Creating firefox driver" );
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
+                break;
             }
             case "edge": {
                 logger.info("Creating edge driver" );
                 WebDriverManager.edgedriver().setup();
                 driver = new EdgeDriver();
+                break;
             }
             default: {
                 logger.info("Creating default chrome driver" );
