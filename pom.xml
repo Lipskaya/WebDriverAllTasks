@@ -18,7 +18,7 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>3.3.0</version>
+            <version>4.2.2</version>
             <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/junit/junit -->
@@ -36,7 +36,7 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>3.3.0</version>
+            <version>4.2.2</version>
             <scope>compile</scope>
         </dependency>
         <dependency>

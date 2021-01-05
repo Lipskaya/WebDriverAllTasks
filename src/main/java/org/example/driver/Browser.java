@@ -37,7 +37,7 @@ public class Browser implements WrapsDriver {
             }
             default: {
                 // System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-                WebDriverManager.chromedriver().setup();
+                WebDriverManager.chromedriver().driverVersion("87.0.4280.88").setup();
               //  driver = new ChromeDriver();
                 // from here: https://stackoverflow.com/questions/26772793/org-openqa-selenium-unhandledalertexception-unexpected-alert-open
                 // ПОзволяет настроить поведение драйвера. В нашем случае он нажимает на кнопку "ПРИНЯТЬ"
