@@ -13,7 +13,7 @@ public class PastebinPage extends BasePage {
     private static final String FORM_NAME_XPATH ="//*[@id='postform-name']";
     public static final String CODE = "Hello from WebDriver";
     public static final String TITLE = "helloweb";
-    private static final String SUBMIT_BUTTON_XPATH="//button[text()='Create New Paste']";
+    private static final String SUBMIT_BUTTON_XPATH="//button[text()='Create New Paste BLAHBLAH']";
     private static final String PAST_HIGHLIGHTING_XPATH = "//div[@class='col-sm-9 field-wrapper']//span[contains(@id, 'select2-postform-format-container')]";
     private static final String BASH_XPATH = "//li[text()='Bash']";
     public static final String CODE_ADVANCED = "git config --global user.name  \"New Sheriff in Town\"\ngit reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\ngit push origin master --force";
