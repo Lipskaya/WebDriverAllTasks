@@ -28,7 +28,8 @@ public class TestListener implements ITestListener {
     }
 
     public void onTestFailure(ITestResult iTestResult) {
-        saveScreenshot();
+
+        saveScreenshot(iTestResult.getInstanceName() + "(" + iTestResult.getName() + ")");
     }
 
     public void onTestSkipped(ITestResult iTestResult) {
@@ -47,13 +48,14 @@ public class TestListener implements ITestListener {
 
     }
 
-    private void saveScreenshot(){
+    private void saveScreenshot(String name){
         File screenCapture = ((TakesScreenshot) Browser.getInstance()
                 .getWrappedDriver())
                 .getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(screenCapture, new File(
                     ".//target/screenshots/"
+                            + name + "_"
                     + getCurrentTimeAsString() +
                     ".png"));
         } catch (IOException e) {

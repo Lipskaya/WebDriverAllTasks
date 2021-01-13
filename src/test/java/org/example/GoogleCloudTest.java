@@ -15,7 +15,7 @@ class GoogleCloudTest extends BaseTest {
     private int tenEmailTab = 1;
 
 
-    @Test
+    @Test(groups = { "smoke"})
     void baseTest() {
         GoogleCloudPage page = new GoogleCloudPage();
 
