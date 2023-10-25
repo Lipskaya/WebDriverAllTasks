@@ -14,7 +14,7 @@ The following script is automated:
        * Instance type: n1-standard-8 (vCPU: 8, RAM: 30 GB)
        * Select "Add GPUs".
            * Number of GPUs: 1
-           *GPU type: NVIDIA Tesla V100.
+           * GPU type: NVIDIA Tesla V100.
        * Local SSD: 2x375 GB
        * Data Center Location: Frankfurt (Europe-West3)
        * Mandatory use: 1 year.
