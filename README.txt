@@ -1,5 +1,6 @@
-Selenium WebDriver, unit testing framework and Page Object concept were used to complete the task. The following script is automated:
-
+Selenium WebDriver, JUnit testing framework and Page Object concept were used to complete the task.
+The following script is automated:
+# GoogleCloudTest:
 1. Open https://cloud.google.com/.
 2. By clicking the portal search button at the top of the page, enter “Google Cloud Platform Pricing Calculator” in the search field.
 3. Start the search by clicking the search button.
@@ -25,5 +26,23 @@ Selenium WebDriver, unit testing framework and Page Object concept were used to 
 12. Click SEND E-MAIL.
 13. Wait for the cost estimate email and check to see if the Total Estimated Monthly Cost in the email matches what appears in the calculator.
 
-to run framework execute next command:
+# PastebinTest:
+Open https://pastebin.com
+Create a New Paste with the following details:
+
+* Code:
+git config --global user.name "New Sheriff in Town"
+git reset $(git commit-tree HEAD^{tree} -m "Legacy code")
+git push origin master --force
+
+* Syntax Highlighting: "Bash"
+* Paste Expiration: "10 Minutes"
+* Paste Name / Title: "how to gain dominance among developers"
+3. Save the paste and check the following:
+* Browser page title matches Paste Name / Title
+* Syntax highlighted for bash
+* Check that the code matches the entered one
+
+
+To run framework execute next command:
 mvn -Denvironment=dev -Dsurefire.suiteXmlFiles=src/test/resources/testng_smoke.xml clean test
