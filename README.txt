@@ -1,4 +1,4 @@
-Selenium WebDriver, JUnit testing framework and Page Object concept were used to complete the task.
+## Selenium WebDriver, JUnit testing framework and Page Object concept were used to complete the task.
 The following script is automated:
 # GoogleCloudTest:
 1. Open https://cloud.google.com/.
@@ -8,15 +8,15 @@ The following script is automated:
 5. Activate the COMPUTE ENGINE section at the top of the page.
 6. Fill out the form with the following information:
        * Number of copies: 4
-       *What are these instances for?: Leave blank.
+       * What are these instances for?: Leave blank.
        * Operating System/Software: Free: Debian, CentOS, CoreOS, Ubuntu or other user provided operating system.
-       *VM class: Normal
+       * VM class: Normal
        * Instance type: n1-standard-8 (vCPU: 8, RAM: 30 GB)
        * Select "Add GPUs".
            * Number of GPUs: 1
            *GPU type: NVIDIA Tesla V100.
        * Local SSD: 2x375 GB
-       *Data Center Location: Frankfurt (Europe-West3)
+       * Data Center Location: Frankfurt (Europe-West3)
        * Mandatory use: 1 year.
 7. Click Add to Assessment.
 8. Select EMAIL ASSESSMENT.
@@ -44,5 +44,5 @@ git push origin master --force
 * Check that the code matches the entered one
 
 
-To run framework execute next command:
+## Run framework execute next command:
 mvn -Denvironment=dev -Dsurefire.suiteXmlFiles=src/test/resources/testng_smoke.xml clean test
