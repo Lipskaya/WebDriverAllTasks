@@ -9,15 +9,12 @@ import org.testng.annotations.Listeners;
 @Listeners({TestListener.class})
 public class BaseTest {
     private static Browser browser;
-
-    @BeforeSuite//открывает браузер перед выполнением сценария
+    @BeforeSuite
     public static void setup() {
         browser = Browser.getInstance();
     }
-
     @AfterSuite
     public static void tearDown() {
-
         browser.stopBrowser();
     }
 }

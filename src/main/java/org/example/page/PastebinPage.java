@@ -23,28 +23,22 @@ public class PastebinPage extends BasePage {
         super(PASTEBIN_PAGE_URL);
         logger.info("Created PastebinPage");
     }
-
     public void fillCode(String value){
         waitVisible(POST_FORM_XPATH).sendKeys(value);
     }
-
     public void fillExpiration(){
         waitVisible(PAST_EXPIRATION_XPATH).click();
         waitVisible(TEN_MINUTES_XPATH).click();
     }
-
     public void fillTitle(String title){
         waitVisible(FORM_NAME_XPATH).sendKeys(title);
     }
-
     public void submitForm(){
         waitVisible(SUBMIT_BUTTON_XPATH).click();
     }
-
     public boolean isTitleCorrect(Paste paste){
         boolean result = false;
         try {
-            //генерим динамический xPath для переданного в параметре метода имени папки
             String xpathString = "//h1";
             waitVisible(xpathString);
             result = paste.getTitle().equals(waitVisible(xpathString).getText());
@@ -54,12 +48,9 @@ public class PastebinPage extends BasePage {
         }
         return result;
     }
-
     public boolean isExpirationCorrect(){
         boolean result = false;
-
         try {
-            //генерим динамический xPath для переданного в параметре метода имени папки
             String xpathString = "//div[@class='expire']";
             waitVisible(xpathString);
             result = "10 MIN".equals(waitVisible(xpathString).getText().trim());
@@ -69,12 +60,10 @@ public class PastebinPage extends BasePage {
         }
         return result;
     }
-
     public boolean isCodeCorrect(Paste paste){
         boolean result = false;
 
         try {
-            //генерим динамический xPath для переданного в параметре метода имени папки
             String xpathString = "//textarea[@class='textarea']";
             waitVisible(xpathString);
             result = paste.getCode().equals(waitVisible(xpathString).getText().trim());
@@ -88,12 +77,9 @@ public class PastebinPage extends BasePage {
         waitVisible(PAST_HIGHLIGHTING_XPATH).click();
         waitVisible(BASH_XPATH).click();
     }
-
     public boolean isHighlightingBash(){
         boolean result = false;
-
         try {
-            //генерим динамический xPath для переданного в параметре метода имени папки
             String xpathString = "//ol[@class='bash']";
             waitVisible(xpathString);
             result = true;
@@ -110,7 +96,5 @@ public class PastebinPage extends BasePage {
         }
         fillExpiration();
         fillTitle(paste.getTitle());
-
-
     }
 }

@@ -9,7 +9,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-
 import java.io.File;
 import java.io.IOException;
 import java.time.ZonedDateTime;
@@ -18,36 +17,21 @@ import java.time.format.DateTimeFormatter;
 
 public class TestListener implements ITestListener {
     private Logger log = LogManager.getRootLogger();
-
     public void onTestStart(ITestResult iTestResult) {
-
     }
-
     public void onTestSuccess(ITestResult iTestResult) {
-
     }
-
     public void onTestFailure(ITestResult iTestResult) {
-
         saveScreenshot(iTestResult.getInstanceName() + "(" + iTestResult.getName() + ")");
     }
-
     public void onTestSkipped(ITestResult iTestResult) {
-
     }
-
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
-
     }
-
     public void onStart(ITestContext iTestContext) {
-
     }
-
     public void onFinish(ITestContext iTestContext) {
-
     }
-
     private void saveScreenshot(String name){
         File screenCapture = ((TakesScreenshot) Browser.getInstance()
                 .getWrappedDriver())
@@ -62,7 +46,6 @@ public class TestListener implements ITestListener {
             log.error("Failed to save screenshot: " + e.getLocalizedMessage());
         }
     }
-
     private String getCurrentTimeAsString(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "uuuu-MM-dd_HH-mm-ss" );
         return ZonedDateTime.now().format(formatter);

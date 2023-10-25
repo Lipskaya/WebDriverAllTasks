@@ -10,29 +10,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
 class GoogleCloudTest extends BaseTest {
-
     private int googleCloudTab = 0;
     private int tenEmailTab = 1;
 
-
-    @Test(groups = { "smoke"})
+    @Test(groups = {"smoke"})
     void baseTest() {
         GoogleCloudPage page = new GoogleCloudPage();
-
         page.openPage();
         page.closeCookiesDialog();
         page.performSearch("Google Cloud Platform Pricing Calculator");
         page.clickFirstSearchResult();
         page.clickComputeEngine();
         page.fillNumberOfInstances(4);
-
         VirtualMachine vm = createVirtualMachine();
-
         page.fillVirtualMachineParameters(vm);
-
         page.fillCommitUsage(CommitUsage.ONE_YEAR);
         page.tabAddToEstimate();
-
         assertTrue(page.isVMClassCorrect());
         assertTrue(page.isInstanceTypeCorrect());
         assertTrue(page.isRegionCorrect());
@@ -41,24 +34,21 @@ class GoogleCloudTest extends BaseTest {
         assertTrue(page.isTotalEstimatedCostCorrect());
         page.chooseEmailEstimate();
         page.openNewTab();
-
         TenMinuteEmailPage tenMinuteEmailPage = new TenMinuteEmailPage();
         tenMinuteEmailPage.openPage();
+        tenMinuteEmailPage.closeCookiesDialog();
         String email = tenMinuteEmailPage.getCopyEmailAddress();
+        System.out.println("*** " + email +" ***");
         tenMinuteEmailPage.changeTab(googleCloudTab);
-
         page.sendEmail(email);
         tenMinuteEmailPage.changeTab(tenEmailTab);
-        tenMinuteEmailPage.openEmailWithTitle("Google Cloud Platform Price Estimate");
+        tenMinuteEmailPage.closeCookiesDialog();
+        tenMinuteEmailPage.openEmailWithTitle("Google Cloud Price Estimate");
         String emailPrice = tenMinuteEmailPage.getTotalPrice();
-
         page.changeTab(googleCloudTab);
         String calculatedPrice = page.getTotalPrice();
-
         assertEquals(emailPrice, calculatedPrice);
-
     }
-
     private VirtualMachine createVirtualMachine() {
         VirtualMachine vm = new VirtualMachine();
         vm.setOperatingSystems(OperatingSystems.FREE_DEBIAN);
@@ -70,7 +60,5 @@ class GoogleCloudTest extends BaseTest {
         vm.setLocalSSD("2");
         vm.setLocation(Location.FRANKFURT);
         return vm;
-
     }
-
 }
